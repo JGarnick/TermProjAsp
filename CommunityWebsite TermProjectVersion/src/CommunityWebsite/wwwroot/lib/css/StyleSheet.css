@@ -304,7 +304,7 @@ p{
 }
 a.blocklink {
     height: 0;
-    padding-bottom: 17.5%;
+    padding-bottom: 48.5%;
     display: inline-block;
     float: left;
     width: 32.63%;
@@ -379,7 +379,7 @@ a.blocklink:nth-child(2) {
 }
 #slide-3.sf-slide .superfeature-half, #slide-3.sf-slide .superfeature-blur{
     background-size:contain;
-    background-position: 100% 75%;
+    background-position: 0% 75%;
     height: 103%;
 }
 .sf-slide .superfeature-blur {

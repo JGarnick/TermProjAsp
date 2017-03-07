@@ -14,18 +14,14 @@ namespace CommunityWebsite.Controllers
         {
             return View();
         }
+        [Route("")]
+        [Route("Index")]
+        [Route("Home")]
         public ViewResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Home";
             
             return View();
         }
-        [Route("Home/About/Contact")]
-        public ViewResult Contact()
-        {
-            ViewBag.Title = "Contact Page";
-            return View();
-        }
-
     }
 }
