@@ -1,0 +1,16 @@
+﻿@model CommunityWebsite.Models.NewsModel
+
+<div><h1>This is the Archived News page</h1></div>
+
+@foreach (CommunityWebsite.Models.NewsModel n in CommunityWebsite.Models.Articles.ArticlesList)
+{
+    if (n.Archived)
+    {
+        <div>
+            <span><strong>This article is Archived</strong></span>
+            <h3>@n.Title</h3>
+            <small>Article created by @n.Author on @n.PublishDate</small>
+            <p>@n.Body</p>
+        </div>
+    }
+}

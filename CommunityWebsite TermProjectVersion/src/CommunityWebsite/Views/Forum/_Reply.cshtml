@@ -1,0 +1,134 @@
+﻿@using Microsoft.AspNetCore.Mvc;
+@using CommunityWebsite.Models;
+@model CommunityWebsite.Models.Reply
+
+
+<a class="btn btn-default" href="/Community/Forum"style="margin-bottom:15px;"><i class="fa fa-angle-left"></i> Back To Forum</a>
+<div class="post">
+    <div class="wrap-ut pull-left">
+        <div class="userinfo pull-left">
+            <div class="avatar">
+                @if (ViewBag.Message.Owner.LoggedIn)
+                {
+                    <div class="status green">&nbsp;</div>
+                    if (ViewBag.Message.Owner.AvatarImg != "")
+                    {
+                        @*TODO Make img and status dynamic*@
+                        @*<img src="ViewBag.Message.Owner.AvatarImg" />*@
+                        <img src="~/lib/images/head_shot.jpg" alt="avatar">
+                    }
+                    <div><i class="user-circle-o"></i></div>
+                }
+                else
+                {
+                    <div class="status red">&nbsp;</div>
+                }
+            </div>
+        </div>
+        <div class="posttext pull-left">
+            <h2>@ViewBag.Message.Subject</h2>
+            <p>@ViewBag.Message.Body</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="postinfo pull-left">
+        <div class="comments">
+            <div class="commentbg">
+                @ViewBag.Message.Replies.Count
+                <div class="mark"></div>
+            </div>
+        </div>
+        <div class="time"><i class="fa fa-clock-o"></i> @ViewBag.Message.Date</div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+
+
+
+@if (@ViewBag.Message.Replies.Count != 0)
+{
+    @foreach (Reply m in ViewBag.Message.Replies)
+    {
+        <div class="reply post pull-right">
+            <div class="wrap-ut pull-left">
+                <div class="userinfo pull-left">
+                    <div class="avatar">
+                        <div class="status green">&nbsp;</div>
+                            @if (m.Owner.AvatarImg != "")
+                            {
+                                @*TODO Make img and status dynamic*@
+                                @*<img src="ViewBag.Message.Owner.AvatarImg" />*@
+                                <img src="~/lib/images/head_shot.jpg" alt="avatar">
+                            }
+                            else
+                            {
+                                <div><i class="user-circle-o"></i></div>
+                            }
+                    </div>
+                </div>
+                <div class="posttext pull-left">
+                    <h2>@m.Subject</h2>
+                    <p>@m.Body</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="postinfo pull-left">
+                <div class="time"><i class="fa fa-clock-o"></i> @m.Date</div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    }
+}
+
+<div class="post reply pull-right">
+    <h2 class="headline">New Reply</h2>
+    <div class="divline"></div>
+    <div class="wrap-ut r-form pull-left">
+        <div class="userinfo pull-left">
+            <div class="avatar">
+                @if (ViewBag.Message.Owner.LoggedIn)
+                {
+                    <div class="status green">&nbsp;</div>
+                    if (ViewBag.Message.Owner.AvatarImg != "")
+                    {
+                        <img src="~/lib/images/head_shot.jpg" alt="avatar">
+                    }
+                    <div><i class="user-circle-o"></i></div>
+                }
+                else
+                {
+                    <div class="status red">&nbsp;</div>
+                }
+            </div>
+        </div>
+        <div class="posttext pull-left">
+            <form action="Forum/Reply" method="post">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <h2>Subject:</h2>
+                    </div>
+                    <div class="col-xs-9">
+                        <input type="text" name="subject" asp-for="@Model.Subject" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <h2>Message:</h2>
+                    </div>
+                    <div class="col-xs-9">
+                        <textarea rows="6" name="body" asp-for="@Model.Body"></textarea>
+                    </div>
+                </div>
+                <input type="hidden" name="topic" asp-for="@Model.Topic" value="@ViewBag.Message.Topic" />
+                <input type="hidden" name="date" asp-for="@Model.Date" value="@DateTime.Now" />
+                <input type="hidden" name="owner" asp-for="@Model.Owner" value="@ViewBag.Message.Owner" /> @*TODO This should be the person replying to the message, not the message owner*@
+                <input type="hidden" name="from" asp-for="@Model.From" value="@(ViewBag.Message.Owner.FirstName + " " + ViewBag.Message.Owner.LastName)"/>
+                <input type="hidden" name="id" value="@ViewBag.Message.messageID" />
+                <button class="col-xs-3 pull-right submit" type="submit">Post</button>
+            </form>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+

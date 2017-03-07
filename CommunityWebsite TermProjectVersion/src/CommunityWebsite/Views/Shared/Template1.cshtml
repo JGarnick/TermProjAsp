@@ -1,0 +1,53 @@
+﻿
+@*2-column layout template*@
+<div id="temp-1" class="container-fluid content">
+    <div class="inner-content">
+        <div class="row">
+            <div class="col-1 col-xs-offset-1 col-xs-8">
+                @if(ViewBag.Title == "Resume")
+                {
+                    @Html.Partial("_Resume");
+                }
+                else if (ViewBag.Title == "Archived")
+                {
+                    @Html.Partial("_ArchivedShows");
+                }
+            </div>
+            <div class="col-2 col-xs-3" >
+                <div class="row adjust-padding">
+                    <div id="nav_menu-2" class="widget widget_nav_menu">
+                        <div class="menu-container">
+                            <ul id="side-nav" class="menu">
+                                <li><a href="#">Performances &amp; Events Calendar</a></li>
+                                <li><a href="#">Calendar</a></li>
+                                <li><a href="#">School-Time Matinees</a></li>
+                                <li><a href="#">On Pointe</a></li>
+                                <li><a href="#">Outreach Events</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                @if(ViewBag.Details == "true")
+                 {
+                    <div class="row adjust-padding">
+                        <div id="event-details-sidebar">
+                            <div id="eds-inner">
+                                <div class="eds-venue eds-section">
+                                    <h3>Event Details</h3>
+                                    <strong>Lane Community College</strong>
+                                    <p>
+                                        <div>4000 E 30th Ave</div>
+                                        <div>Eugene, OR 97405</div>
+                                        <div>(541) 463-3000</div>
+                                    </p>
+                                    <a href="https://www.lanecc.edu/" target="_blank"><i class="fa fa-angle-right"></i> WEBSITE</a>
+                                    <a href="https://www.google.com/search?q=directions+to+Lane+Community+College&spell=1&sa=X&ved=0ahUKEwiN_p30orvSAhVKzGMKHY3kCkoQvwUIGSgA&biw=1699&bih=927" target="_blank"><i class="fa fa-angle-right"></i> MAP</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 }
+            </div>
+        </div>
+    </div>
+</div>

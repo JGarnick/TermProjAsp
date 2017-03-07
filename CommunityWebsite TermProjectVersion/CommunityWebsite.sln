@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{47844759-D7FB-4EB9-BF38-7FCA214A9065}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7AD16508-D8B2-4A1D-AAAE-FC675027D9FF}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CommunityWebsite", "src\CommunityWebsite\CommunityWebsite.xproj", "{43772B55-FB0A-4695-BF07-C129902011D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{642E6912-3E7D-4929-9C0A-ED4ABFB1B97A}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CommunityWebsite.Tests", "test\CommunityWebsite.Tests\CommunityWebsite.Tests.xproj", "{9FFD6FDA-AA1F-401C-A364-55CC6EE8195F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43772B55-FB0A-4695-BF07-C129902011D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43772B55-FB0A-4695-BF07-C129902011D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43772B55-FB0A-4695-BF07-C129902011D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43772B55-FB0A-4695-BF07-C129902011D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FFD6FDA-AA1F-401C-A364-55CC6EE8195F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FFD6FDA-AA1F-401C-A364-55CC6EE8195F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FFD6FDA-AA1F-401C-A364-55CC6EE8195F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FFD6FDA-AA1F-401C-A364-55CC6EE8195F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{43772B55-FB0A-4695-BF07-C129902011D5} = {47844759-D7FB-4EB9-BF38-7FCA214A9065}
+		{9FFD6FDA-AA1F-401C-A364-55CC6EE8195F} = {642E6912-3E7D-4929-9C0A-ED4ABFB1B97A}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,41 @@
+﻿@using CommunityWebsite.Models;
+
+<a class="btn btn-default" href="/Community/Blog?title=Blog&sidebar=true" style="margin-bottom:15px;"><i class="fa fa-angle-left"></i> Back To Blogs</a>
+<div class="post">
+    <div class="wrap-ut pull-left">
+        <div class="userinfo pull-left">
+            <div class="avatar">
+                @if (ViewBag.Post.Author.AvatarImg != "")
+                {
+                    <img src="~/lib/images/head_shot.jpg" alt="avatar">
+                }
+                else
+                {
+                    <div><i class="fa fa-user-circle-o"></i></div>
+                }
+
+                @if (ViewBag.Post.Author.LoggedIn)
+                {
+                    <div class="status green">&nbsp;</div>
+                }
+                else
+                {
+                    <div class="status red">&nbsp;</div>
+                }
+            </div>
+        </div>
+        <div class="posttext pull-left">
+            <h2>@ViewBag.Post.Title</h2>
+            <p>@ViewBag.Post.ShortDescription</p>
+            <p>@ViewBag.Post.Body</p>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="postinfo pull-left">
+        <div class="time"><i class="fa fa-clock-o"></i> @ViewBag.Post.Created</div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+
+

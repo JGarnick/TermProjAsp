@@ -1,0 +1,191 @@
+﻿@using CommunityWebsite.Models;
+@using CommunityWebsite.Repositories;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="~/lib/css/flexslider.css" rel="stylesheet" />
+    <link href="~/lib/css/flexslider-gallery.css" rel="stylesheet" />
+    <link href="~/lib/css/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="header" role="banner">
+        <div id="inner-header" class="wrap cf">
+            <div class="logo"> 
+                <a href="/">
+                    <img class="col-xs-4" src="~/lib/images/logo.jpg" alt="Christina Logo"/>
+                    <span class="col-xs-8"><strong>Bambino Productions</strong></span>
+                    <p>Performing Arts Services</p>
+                </a>
+            </div>
+            <div id="head-wrap">
+                <div id="header-nav">
+                    <nav role="navigation" >
+                        <ul id="menu-main-menu" class="nav top-nav cf">
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
+                            <li>
+                                <a href="inactive">Services</a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="#">Schedule Class</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="inactive" href="">About</a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        @Html.ActionLink("Resume/History", "Resume", "About")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Archived Shows", "Archived", "About")
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a>Community</a>
+                                <ul class="sub-menu">
+                                    <li >
+                                        @Html.ActionLink("Testimonials", "Testimonials", "Testimonial")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Forum", "Forum", "Forum")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Blog", "Blog", "Blog")
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Join Our Community", "Join", "Join")
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                @Html.ActionLink("Contact", "Contact", "Home")
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    @if (ViewBag.Title == "Home")
+    {
+        <div id="home-superfeature">
+            <div id="home-superfeature-inner" class="flexslider">
+                <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                    <ul class="slides" style="width: 2200%; transition-duration: 0s; transform: translate3d(-5452px, 0px, 0px);">
+                        <li id="slide-1" class="sf-slide" data-thumb-alt="" style="width: 1363px; margin-right: 0px; float: left; display: block;"><a href="#" class="sp-right superfeature-half"></a><div class="sp-left superfeature-half"><div class="superfeature-blur"></div><div class="superfeature-blur-cover"></div><div class="sp-content"><div class="sp-content-inner"><h3>Something about Slide 1</h3><div class="sf-details"><div class="sf-details-item">Performance</div><span class="sf-sep">|</span><div class="sf-details-item">March 11, 2017</div></div><div class="sp-button cf"></div></div></div></div></li>
+                        <li id="slide-2" class="sf-slide" data-thumb-alt="" style="width: 1363px; margin-right: 0px; float: left; display: block;"><a href="#" class="sp-right superfeature-half"></a><div class="sp-left superfeature-half"><div class="superfeature-blur"></div><div class="superfeature-blur-cover"></div><div class="sp-content"><div class="sp-content-inner"><h3>Something about Slide 2</h3><div class="sf-details"><div class="sf-details-item">On Pointe</div><span class="sf-sep">|</span><div class="sf-details-item">March 24, 2017</div></div><div class="sp-button cf"></div></div></div></div></li>
+                        <li id="slide-3" class="sf-slide" data-thumb-alt="" style="width: 1363px; margin-right: 0px; float: left; display: block;"><a href="#" class="sp-right superfeature-half"></a><div class="sp-left superfeature-half"><div class="superfeature-blur"></div><div class="superfeature-blur-cover"></div><div class="sp-content"><div class="sp-content-inner"><h3>Something about Slide 3</h3><div class="sf-details"><div class="sf-details-item">Performance</div><span class="sf-sep">|</span><div class="sf-details-item">April 1, 2017</div></div><div class="sp-button cf"></div></div></div></div></li>
+                        <li id="slide-4" class="sf-slide flex-active-slide" data-thumb-alt="" style="width: 1363px; margin-right: 0px; float: left; display: block;"><a href="#" class="sp-right superfeature-half"></a><div class="sp-left superfeature-half"><div class="superfeature-blur"></div><div class="superfeature-blur-cover"></div><div class="sp-content"><div class="sp-content-inner"><h3>Something about Slide 4</h3><div class="sf-details"><div class="sf-details-item">Performance</div><span class="sf-sep">|</span><div class="sf-details-item">April 21, 2017</div></div><div class="sp-button cf"></div></div></div></div></li>
+                    </ul>
+                </div>
+                <ul class="flex-direction-nav">
+                    <li class="flex-nav-prev">
+                        <a class="flex-prev" href="#">Previous</a>
+                    </li>
+                    <li class="flex-nav-next">
+                        <a class="flex-next" href="#">Next</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div id="sf-gallery">
+            <div id="sf-gallery-inner" class="flexslider">
+                <ul class="slides" style="width: 1000%; transition-duration: 0s; transform: translate3d(-4767px, 0px, 0px);">
+                    <li class="nh-slide-1" data-thumb-alt="">
+                        <img src="~/lib/images/img6.jpg" />
+                    </li>
+                    <li class="nh-slide-2 flex-active-slide" data-thumb-alt="">
+                        <img src="~/lib/images/img5.jpg" />
+                    </li>
+                    <li class="nh-slide-3" data-thumb-alt="">
+                        <img src="~/lib/images/img10.jpg" />
+                    </li>
+                    <li class="nh-slide-4"  data-thumb-alt="">
+                        <img src="~/lib/images/img11.jpg" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    }
+    @RenderBody()
+    <footer class="footer clearfix">
+        <div id="inner-footer" class="wrap cf">
+            <div class="footer-col fc1">
+                <div class="logo">
+                    <a href="/">
+                        <img class="col-xs-5" src="~/lib/images/logo.jpg" alt="Christina Logo" />
+                    </a>
+                </div>
+                <h2><strong>Bambino Productions</strong></h2>
+                <p>Performing Arts Services</p>
+            </div>
+
+            <div class="footer-col fc2">
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com/christina.lindsay2" target="_blank"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="inactive" target="_blank"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="inactive" target="_blank"><i class="fa fa-instagram"></i></a>
+                    <a href="#" class="inactive" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col fc3">
+                <a class="footer-locations-link" href="Home/Contact">CONTACT INFO</a>
+
+                <nav role="navigation">
+                    <div class="footer-links cf">
+                        <ul id="menu-footer-menu" class="nav footer-nav cf">
+                            <li><a href="About/Archived">Performances &amp; Events</a></li>
+                            <li><a href="About/Resume">Experience</a></li>
+                            <li><a href="Community/Blog">Stay Informed</a></li>
+                            <li><a href="About/Resume">About Christina</a></li>
+                            <li><a href="Community/Join">Join the Community</a></li>
+                            <li><a href="Community/Testimonials">What others have to say</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="~/lib/jquery/jquery-migrate.min.js"></script>
+    <script src="~/lib/jquery/jquery.flexslider.js"></script>
+    <script src="~/lib/jquery/core.min.js"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide"
+            });
+        });
+    </script>
+    <script>
+    $(document).ready(function () {
+        $("#f-submit").on("click", function (event) {
+            //event.preventDefault();
+            $("#return").html("<input type='hidden' name='selected' value='" + $(".selecttopic").val() + "' />");
+        });
+        $(".inactive").on("click", function (event) {
+            event.preventDefault();
+        });
+    });
+    </script>
+</body>
+    
+</html>
