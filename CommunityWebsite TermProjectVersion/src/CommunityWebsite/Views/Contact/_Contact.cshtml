@@ -1,0 +1,38 @@
+﻿<div class="col-xs-offset-2 col-xs-10 contact-form">
+    <article>
+        <header>
+            <h1>Contact</h1>
+        </header>
+
+        <div class="entry-content">
+            <p>If you would like to reach Christina directly with questions or comments, please use the form below</p>
+            <ul>
+                <li>If you would prefer to speak to Christina in person you can reach her at (206) 618-0577</li>
+                <li>If you are interested in scheduling a class, please use the calendar located <a href="Services/Schedule">Here</a></li>
+            </ul>
+            
+            <div role="form">
+                
+                <form action="Contact/Success" method="post" enctype="text/plain">
+                    <p>
+                        <label for="form-your-name">Your Name (required)</label><br>
+                        <span ><input type="text" name="name" value="" size="40" aria-required="true"  placeholder="Your Name"></span>
+                    </p>
+                    <p>
+                        <label for="form-your-email">Your Email (required)</label><br>
+                        <span ><input type="email" name="email" value="" size="40" aria-required="true"  placeholder="Your Email"></span>
+                    </p>
+                    <p>
+                        <label for="form-your-subject">Subject</label><br>
+                        <span ><input type="text" name="subject" value="" size="40" aria-required="true" placeholder="Subject"></span>
+                    </p>
+                    <p>
+                        <label for="form-your-message">Your Message</label><br>
+                        <span ><textarea name="message" cols="90" rows="10" aria-required="true" placeholder="Your Message"></textarea></span>
+                    </p>
+                    <p><input type="submit" value="Send"></p>
+                </form>
+            </div>
+        </div>
+    </article>
+</div>

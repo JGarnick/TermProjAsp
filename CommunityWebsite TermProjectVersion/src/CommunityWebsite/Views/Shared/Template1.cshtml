@@ -1,8 +1,8 @@
 ﻿
 @*2-column layout template*@
 <div id="temp-1" class="container-fluid content">
-    <div class="inner-content">
-        <div class="row">
+    <div class="inner-content clearfix">
+        <div>
             <div class="col-1 col-xs-offset-1 col-xs-8">
                 @if(ViewBag.Title == "Resume")
                 {
@@ -12,17 +12,45 @@
                 {
                     @Html.Partial("_ArchivedShows");
                 }
+                else if (ViewBag.Title == "Home")
+                {
+                    @Html.Partial("_Index");
+                }
+                else if (ViewBag.Title == "Schedule")
+                {
+                    @Html.Partial("_Schedule");
+                }
+                else if (ViewBag.Title == "Contact")
+                {
+                    if(ViewBag.Success == "true")
+                    {
+                        @Html.Partial("_Success");
+
+                    }
+                    else
+                    {
+                        @Html.Partial("_Contact");
+                    }
+                }
+                else if(ViewBag.Title == "SignUp")
+                {
+                    @Html.Partial("_SignUp");
+                }
+                else if (ViewBag.Title == "Login")
+                {
+                    @Html.Partial("_Login");
+                }
             </div>
             <div class="col-2 col-xs-3" >
                 <div class="row adjust-padding">
                     <div id="nav_menu-2" class="widget widget_nav_menu">
                         <div class="menu-container">
                             <ul id="side-nav" class="menu">
-                                <li><a href="#">Performances &amp; Events Calendar</a></li>
-                                <li><a href="#">Calendar</a></li>
-                                <li><a href="#">School-Time Matinees</a></li>
-                                <li><a href="#">On Pointe</a></li>
-                                <li><a href="#">Outreach Events</a></li>
+                                <li><a class="inactive" href="#">Performances &amp; Events Calendar</a></li>
+                                <li><a class="inactive" href="#">Calendar</a></li>
+                                <li><a class="inactive" href="#">School-Time Matinees</a></li>
+                                <li><a class="inactive" href="#">On Pointe</a></li>
+                                <li><a class="inactive" href="#">Outreach Events</a></li>
                             </ul>
                         </div>
                     </div>
@@ -40,8 +68,8 @@
                                         <div>Eugene, OR 97405</div>
                                         <div>(541) 463-3000</div>
                                     </p>
-                                    <a href="https://www.lanecc.edu/" target="_blank"><i class="fa fa-angle-right"></i> WEBSITE</a>
-                                    <a href="https://www.google.com/search?q=directions+to+Lane+Community+College&spell=1&sa=X&ved=0ahUKEwiN_p30orvSAhVKzGMKHY3kCkoQvwUIGSgA&biw=1699&bih=927" target="_blank"><i class="fa fa-angle-right"></i> MAP</a>
+                                    <a class="inactive" href="https://www.lanecc.edu/" target="_blank"><i class="fa fa-angle-right"></i> WEBSITE</a>
+                                    <a class="inactive" href="https://www.google.com/search?q=directions+to+Lane+Community+College&spell=1&sa=X&ved=0ahUKEwiN_p30orvSAhVKzGMKHY3kCkoQvwUIGSgA&biw=1699&bih=927" target="_blank"><i class="fa fa-angle-right"></i> MAP</a>
                                 </div>
                             </div>
                         </div>

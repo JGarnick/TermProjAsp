@@ -10,10 +10,6 @@ namespace CommunityWebsite.Controllers
 {
     public class HomeController : Controller
     {
-        public ViewResult TestHomePage()
-        {
-            return View();
-        }
         [Route("")]
         [Route("Index")]
         [Route("Home")]
@@ -21,7 +17,7 @@ namespace CommunityWebsite.Controllers
         {
             ViewBag.Title = "Home";
             
-            return View();
+            return View("Template1");
         }
     }
 }

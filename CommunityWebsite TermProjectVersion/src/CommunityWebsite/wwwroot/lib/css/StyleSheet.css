@@ -293,12 +293,19 @@ p{
 .footer-links ul li a {
     padding-left: 1em;
 }
+.nav>li>a:focus, .nav>li>a:hover{
+    color:#cec0a2;
+    background-color:unset;
+}
 /*end footer styles*/
 
 
 /*Homepage Styles*/
-#threelinks-home {
+#temp-1{
     background-color: #e1e1e1;
+}
+#threelinks-home {
+    !background-color: #e1e1e1;
     padding: 1em;
     clear: both;
 }
@@ -1092,3 +1099,13 @@ td.chbox {
 .new-message{
     width:100% !important;
 }
+/* End new message styles*/
+
+/*Contact Form Styles*/
+.contact-form li{
+    list-style-type: initial;
+}
+.contact-form ul{
+    padding-left:40px;
+}
+/*End contact form styles*/
