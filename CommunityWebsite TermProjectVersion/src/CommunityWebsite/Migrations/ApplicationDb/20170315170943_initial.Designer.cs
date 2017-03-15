@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using CommunityWebsite.Repositories;
 
-namespace CommunityWebsite.Migrations
+namespace CommunityWebsite.Migrations.ApplicationDb
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170305001241_initial")]
+    [Migration("20170315170943_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,9 +22,11 @@ namespace CommunityWebsite.Migrations
                     b.Property<int>("BlogPostID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AuthormemberID");
+                    b.Property<string>("AuthorId");
 
                     b.Property<string>("Body");
+
+                    b.Property<string>("Category");
 
                     b.Property<string>("ShortDescription");
 
@@ -34,33 +36,59 @@ namespace CommunityWebsite.Migrations
 
                     b.HasKey("BlogPostID");
 
-                    b.HasIndex("AuthormemberID");
+                    b.HasIndex("AuthorId");
 
                     b.ToTable("BlogPosts");
                 });
 
             modelBuilder.Entity("CommunityWebsite.Models.Member", b =>
                 {
-                    b.Property<int>("memberID")
-                        .ValueGeneratedOnAdd();
+                    b.Property<string>("Id");
+
+                    b.Property<int>("AccessFailedCount");
 
                     b.Property<string>("AvatarImg");
 
+                    b.Property<string>("ConcurrencyStamp");
+
                     b.Property<string>("Email");
+
+                    b.Property<bool>("EmailConfirmed");
 
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
 
-                    b.Property<bool>("LoggedIn");
+                    b.Property<bool>("LockoutEnabled");
 
-                    b.Property<string>("Phone");
+                    b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("NormalizedEmail");
+
+                    b.Property<string>("NormalizedUserName");
+
+                    b.Property<string>("Password")
+                        .HasAnnotation("MaxLength", 20);
+
+                    b.Property<string>("PasswordHash");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<DateTime>("Registered");
 
-                    b.HasKey("memberID");
+                    b.Property<string>("SecurityStamp");
 
-                    b.ToTable("Members");
+                    b.Property<bool>("TwoFactorEnabled");
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Member");
                 });
 
             modelBuilder.Entity("CommunityWebsite.Models.Message", b =>
@@ -74,7 +102,7 @@ namespace CommunityWebsite.Migrations
 
                     b.Property<string>("From");
 
-                    b.Property<int?>("OwnermemberID");
+                    b.Property<string>("OwnerId");
 
                     b.Property<string>("Subject");
 
@@ -82,7 +110,7 @@ namespace CommunityWebsite.Migrations
 
                     b.HasKey("messageID");
 
-                    b.HasIndex("OwnermemberID");
+                    b.HasIndex("OwnerId");
 
                     b.ToTable("Messages");
                 });
@@ -98,7 +126,7 @@ namespace CommunityWebsite.Migrations
 
                     b.Property<string>("From");
 
-                    b.Property<int?>("OwnermemberID");
+                    b.Property<string>("OwnerId");
 
                     b.Property<string>("Subject");
 
@@ -108,7 +136,7 @@ namespace CommunityWebsite.Migrations
 
                     b.HasKey("replyID");
 
-                    b.HasIndex("OwnermemberID");
+                    b.HasIndex("OwnerId");
 
                     b.HasIndex("messageID");
 
@@ -122,13 +150,13 @@ namespace CommunityWebsite.Migrations
 
                     b.Property<string>("Body");
 
-                    b.Property<int?>("OwnermemberID");
+                    b.Property<string>("OwnerId");
 
                     b.Property<string>("Title");
 
                     b.HasKey("TestimonialID");
 
-                    b.HasIndex("OwnermemberID");
+                    b.HasIndex("OwnerId");
 
                     b.ToTable("Testimonials");
                 });
@@ -137,21 +165,21 @@ namespace CommunityWebsite.Migrations
                 {
                     b.HasOne("CommunityWebsite.Models.Member", "Author")
                         .WithMany("BlogPosts")
-                        .HasForeignKey("AuthormemberID");
+                        .HasForeignKey("AuthorId");
                 });
 
             modelBuilder.Entity("CommunityWebsite.Models.Message", b =>
                 {
                     b.HasOne("CommunityWebsite.Models.Member", "Owner")
                         .WithMany("Messages")
-                        .HasForeignKey("OwnermemberID");
+                        .HasForeignKey("OwnerId");
                 });
 
             modelBuilder.Entity("CommunityWebsite.Models.Reply", b =>
                 {
                     b.HasOne("CommunityWebsite.Models.Member", "Owner")
                         .WithMany()
-                        .HasForeignKey("OwnermemberID");
+                        .HasForeignKey("OwnerId");
 
                     b.HasOne("CommunityWebsite.Models.Message")
                         .WithMany("Replies")
@@ -162,7 +190,7 @@ namespace CommunityWebsite.Migrations
                 {
                     b.HasOne("CommunityWebsite.Models.Member", "Owner")
                         .WithMany("Testimonials")
-                        .HasForeignKey("OwnermemberID");
+                        .HasForeignKey("OwnerId");
                 });
         }
     }

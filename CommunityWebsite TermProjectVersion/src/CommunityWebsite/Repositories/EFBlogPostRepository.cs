@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CommunityWebsite.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace CommunityWebsite.Repositories
 {
@@ -22,7 +23,7 @@ namespace CommunityWebsite.Repositories
 
         public List<BlogPost> GetAllBlogPostsByAuthor(Member author)
         {
-            return GetAllBlogPosts().Where(b => b.Author.memberID == author.memberID).Include(b => b.Author).ToList();
+            return GetAllBlogPosts().Where(b => b.Author.Id == author.Id).Include(b => b.Author).ToList();
         }
 
         public List<BlogPost> GetAllBlogPostsByCategory(string category)
@@ -40,13 +41,11 @@ namespace CommunityWebsite.Repositories
             return GetAllBlogPosts().Where(b => b.Status == status).Include(b => b.Author).ToList();
         }
 
-        public Member GetAuthorByName(string name)
+        public List<BlogPost> GetBlogPostsByAuthorName(string name)
         {
-            Member owner = (from m in context.Members
-                            where m.FirstName + " " + m.LastName == name
-                            select m).FirstOrDefault<Member>() as Member;
+            List<BlogPost> posts = context.BlogPosts.Where(p => p.Author.Name == name).ToList();
 
-            return owner;
+            return posts;
         }
 
         public BlogPost GetBlogPostByID(int? ID)

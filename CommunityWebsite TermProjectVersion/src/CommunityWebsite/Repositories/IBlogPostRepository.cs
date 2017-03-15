@@ -15,7 +15,7 @@ namespace CommunityWebsite.Repositories
         List<BlogPost> GetAllBlogPostsByStatus(string status);
         int Update(BlogPost post);
         BlogPost GetBlogPostByID(int? ID);
-        Member GetAuthorByName(string name);
+        List<BlogPost> GetBlogPostsByAuthorName(string name);
         List<BlogPost> GetAllBlogPostsByCategory(string category);
     }
 }

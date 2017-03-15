@@ -13,6 +13,6 @@ namespace CommunityWebsite.Repositories
         List<Testimonial> GetAllTestimonialsByOwner(Member owner);
         int Update(Testimonial testimonial);
         Testimonial GetTestimonialByID(int? ID);
-        Member GetOwnerByName(string name);
+        List<Testimonial> GetTestimonialsByAuthorName(string name);
     }
 }

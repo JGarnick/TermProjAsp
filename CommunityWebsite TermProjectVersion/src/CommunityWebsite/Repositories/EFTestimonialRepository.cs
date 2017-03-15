@@ -30,23 +30,14 @@ namespace CommunityWebsite.Repositories
             return GetAllTestimonials().Where(t => t.Owner == owner).Include(t => t.Owner).ToList();
         }
 
-        public Member GetOwnerByName(string name)
+        public List<Testimonial> GetTestimonialsByAuthorName(string name)
         {
-            Member owner = (from m in context.Members
-                            where m.FirstName + " " + m.LastName == name
-                            select m).FirstOrDefault<Member>() as Member;
+            List<Testimonial> testimonials = context.Testimonials.Where(t => t.Owner.Name == name).ToList();
 
-            return owner;
+            return testimonials;
         }
 
         public Testimonial GetTestimonialByID(int? ID)
-        {
-            return (from b in context.Testimonials
-                    where b.TestimonialID == ID
-                    select b).Include(b => b.Owner).FirstOrDefault<Testimonial>();
-        }
-
-        public Testimonial GetTestimonialByID(int ID)
         {
             return (from t in context.Testimonials
                     where t.TestimonialID == ID
@@ -58,5 +49,7 @@ namespace CommunityWebsite.Repositories
             context.Testimonials.Update(testimonial);
             return context.SaveChanges();
         }
+    
     }
 }
+

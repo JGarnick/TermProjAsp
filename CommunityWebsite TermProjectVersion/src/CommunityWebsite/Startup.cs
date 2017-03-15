@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using CommunityWebsite.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using CommunityWebsite.Models;
 
 namespace CommunityWebsite
 {
@@ -19,7 +21,7 @@ namespace CommunityWebsite
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                //.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -30,7 +32,14 @@ namespace CommunityWebsite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(
-                  Configuration["Data:CommunityWebsite:ConnectionString"]));
+                  Configuration["Data:CommunityWebsiteDb:ConnectionString"]));
+
+            services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(
+                Configuration["Data:WebsiteUsersDb:ConnectionString"]));
+
+            services.AddIdentity<Member, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDbContext>();
+
             // Add framework services.
             services.AddMvc();
             //services.AddTransient<IMemberRepository, MemberRepository>();
@@ -63,7 +72,7 @@ namespace CommunityWebsite
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-            SeedData.EnsurePopulated(app);
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }

@@ -58,16 +58,14 @@ namespace CommunityWebsite.Repositories
 
         public List<Message> GetAllMessagesByOwner(Member owner)
         {
-            return GetAllMessages().Where(m => m.Owner.memberID == owner.memberID).ToList();
+            return GetAllMessages().Where(m => m.Owner.Id == owner.Id).ToList();
         }
         //This won't be enough if there are 2 people of the same name. Could theoretically make people pick a unique nickname or something.
-        public Member GetOwnerByName(string name)
+        public List<Message> GetMessagesByOwnerName(string name)
         {
-            Member owner = (from m in context.Members
-                            where m.FirstName + " " + m.LastName == name
-                            select m).FirstOrDefault<Member>() as Member;
+            List<Message> messages = context.Messages.Where(m => m.Owner.Name == name).ToList();
 
-            return owner;
+            return messages;
         }
 
         public int Add(Message message)

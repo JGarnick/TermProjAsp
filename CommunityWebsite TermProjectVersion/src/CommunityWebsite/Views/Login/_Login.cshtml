@@ -1,25 +1,27 @@
-﻿<div class="col-xs-offset-2 col-xs-10 contact-form">
+﻿@model Member
+<div class="col-xs-offset-2 col-xs-10 contact-form">
     <article>
         <header>
             <h1>Login</h1>
         </header>
         <div class="entry-content">
             <div role="form">
-                <form action="Community/Login/Success" method="post" enctype="text/plain">
+                <form action="Admin/Login" method="post" enctype="text/plain">
                     <p>
+                        <div><span asp-validation-summary="All" class="text-danger"></span></div>
                         <div>
-                            <label for="user-name">Username</label>
+                            <label for="UserName">Username</label>
                         </div>
                         <div>
-                            <span><input type="text" name="name" value="" size="40" aria-required="true" placeholder="Your Name"></span>
+                            <span><input type="text" size="40" aria-required="true" placeholder="Username"></span>
                         </div>
                     </p>
                     <p>
                         <div>
-                            <label for="password">Password</label><br>
+                            <label for="Password">Password</label><br>
                         </div>
                         <div>
-                            <span><input name="password" cols="90" rows="10" aria-required="true" placeholder="password" /></span>
+                            <span><input asp-for="Password" cols="90" rows="1" aria-required="true" placeholder="Password" /></span>
                         </div>
                     </p>
                     <p><input type="submit" value="Send"></p>

@@ -31,14 +31,14 @@ namespace CommunityWebsite.Models
 
         //This will be deleted once real members are added to project
         //TODO Delete this when real members are added to project
-        public static Message TestMessage
-        {
-            get
-            {
-                Member member = new Member { FirstName = "John", Email = "jsmith@gmail.com", LastName = "Smith", Phone = "5415551111", Registered = new DateTime(2017, 1, 20) };
-                Message message = new Message { Subject = "Subject1", Body = "Body1", Date = new DateTime(2017, 1, 31), From = member.FirstName + " " + member.LastName, Topic = "Topic1", Owner = member };
-                return message;
-            }
-        }
+        //public static Message TestMessage
+        //{
+        //    get
+        //    {
+        //        Member member = new Member { FirstName = "John", Email = "jsmith@gmail.com", LastName = "Smith", Phone = "5415551111", Registered = new DateTime(2017, 1, 20) };
+        //        Message message = new Message { Subject = "Subject1", Body = "Body1", Date = new DateTime(2017, 1, 31), From = member.FirstName + " " + member.LastName, Topic = "Topic1", Owner = member };
+        //        return message;
+        //    }
+        //}
     }
 }

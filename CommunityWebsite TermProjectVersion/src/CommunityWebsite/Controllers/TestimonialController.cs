@@ -47,21 +47,28 @@ namespace CommunityWebsite.Controllers
             if (selected == "Member")
             {
                 ViewBag.Filtered = "true";
-                var member = testRepo.GetOwnerByName(searchString);
-                if (member != null)
+
+                var queryResult = testRepo.GetTestimonialsByAuthorName(searchString);
+                if (queryResult != null && queryResult.Count > 0)
                 {
-                    var queryResult = testRepo.GetAllTestimonialsByOwner(member);
-                    if (queryResult.Count > 0)
-                    {
-                        ViewBag.MessageToUser = "Your search returned these results:";
-                        return View("Template2", queryResult);
-                    }
-                    else
-                    {
-                        ViewBag.MessageToUser = "Your search returned no results.";
-                        return View("Template2");
-                    }
+                    ViewBag.MessageToUser = "Your search returned these results:";
+                    return View("Template2", queryResult);
                 }
+                //var member = testRepo.GetOwnerByName(searchString);
+                //if (member != null)
+                //{
+                //    var queryResult = testRepo.GetAllTestimonialsByOwner(member);
+                //    if (queryResult.Count > 0)
+                //    {
+                //        ViewBag.MessageToUser = "Your search returned these results:";
+                //        return View("Template2", queryResult);
+                //    }
+                //    else
+                //    {
+                //        ViewBag.MessageToUser = "Your search returned no results.";
+                //        return View("Template2");
+                //    }
+                //}
                 else
                 {
                     ViewBag.MessageToUser = "Your search returned no results.";

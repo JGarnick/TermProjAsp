@@ -94,10 +94,9 @@ namespace CommunityWebsite.Controllers
             else if(selected == "Member")
             {
                 ViewBag.Filtered = "true";
-                var member = messageRepo.GetOwnerByName(searchString);
-                if(member != null)
+                var queryResult = messageRepo.GetMessagesByOwnerName(searchString);
+                if (queryResult != null && queryResult.Count > 0)
                 {
-                    var queryResult = messageRepo.GetAllMessagesByOwner(member);
                     ViewBag.MessageToUser = "Your search returned these results:";
                     return View("Template2", queryResult);
                 }

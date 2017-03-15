@@ -124,7 +124,7 @@
                 <input type="hidden" name="date" asp-for="@Model.Date" value="@DateTime.Now" />
                 <input type="hidden" name="owner" asp-for="@Model.Owner" value="@ViewBag.Message.Owner" /> @*TODO This should be the person replying to the message, not the message owner*@
                 <input type="hidden" name="from" asp-for="@Model.From" value="@(ViewBag.Message.Owner.FirstName + " " + ViewBag.Message.Owner.LastName)"/>
-                <input type="hidden" name="id" value="@ViewBag.Message.messageID" />
+                <input type="hidden" name="id" value="@ViewBag.Message.Id" />
                 <button class="col-xs-3 pull-right submit" type="submit">Post</button>
             </form>
         </div>

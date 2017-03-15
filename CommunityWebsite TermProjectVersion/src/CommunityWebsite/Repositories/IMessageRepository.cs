@@ -18,7 +18,7 @@ namespace CommunityWebsite.Repositories
 
         List<Reply> GetRepliesByMessageID(int ID);
         List<Message> GetAllMessagesByOwner(Member owner);
-        Member GetOwnerByName(string name);
+        List<Message> GetMessagesByOwnerName(string name);
         int Add(Message message);
         int Update(Message message);
 

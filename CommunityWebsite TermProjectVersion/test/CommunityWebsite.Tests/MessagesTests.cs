@@ -12,35 +12,35 @@ namespace CommunityWebsite.Tests
     //Testing the controller, not the repository
     public class MessagesTests
     {
-        FakeMessageRepository repo;
-        ForumController controller;
-        List<Message> messagesByDate;
-        List<Message> messagesBySubject;
-        List<Message> allMessages;
-        DateTime date;
-        Member member;
-        string subject;
+        //FakeMessageRepository repo;
+        //ForumController controller;
+        //List<Message> messagesByDate;
+        //List<Message> messagesBySubject;
+        //List<Message> allMessages;
+        //DateTime date;
+        //Member member;
+        //string subject;
 
-        public MessagesTests()
-        {
-            date = new DateTime(2017, 1, 31);
-            repo = new FakeMessageRepository();
-            messagesByDate = repo.GetAllMessagesByDate(date);
-            controller = new ForumController(repo);
-            member = repo.GetMemberOwnerOfMessage(repo.messages[0]);
-            messagesBySubject = repo.GetAllMessagesBySubject(repo.messages[2].Subject);
-            allMessages = repo.GetAllMessages().ToList();
-            subject = allMessages[0].Subject;
-        }
+        //public MessagesTests()
+        //{
+        //    date = new DateTime(2017, 1, 31);
+        //    repo = new FakeMessageRepository();
+        //    messagesByDate = repo.GetAllMessagesByDate(date);
+        //    controller = new ForumController(repo);
+        //    member = repo.GetMemberOwnerOfMessage(repo.messages[0]);
+        //    messagesBySubject = repo.GetAllMessagesBySubject(repo.messages[2].Subject);
+        //    allMessages = repo.GetAllMessages().ToList();
+        //    subject = allMessages[0].Subject;
+        //}
 
-        [Fact]
-        public void TestGetAllMessagesByDate()
-        {
-            var messages = controller.MessagesByDate(date).ViewData.Model as List<Message>;
+        //[Fact]
+        //public void TestGetAllMessagesByDate()
+        //{
+        //    var messages = controller.MessagesByDate(date).ViewData.Model as List<Message>;
 
-            Assert.Equal(messages.Count, messagesByDate.Count);
+        //    Assert.Equal(messages.Count, messagesByDate.Count);
             //Assert.Equal(messages[0].Body, messagesByDate[0].Body);
-        }
+        //}
 
         //[Fact]
         //public void CanGetMemberOwnerOfMessage()
@@ -50,13 +50,13 @@ namespace CommunityWebsite.Tests
         //    Assert.Equal(member.FirstName, testMember.FirstName);
         //}
 
-        [Fact]
-        public void CanGetAllMessagesBySubject()
-        {
-            List<Message> messages = controller.AllMessagesBySubject(subject).ViewData.Model as List<Message>;
+        //[Fact]
+        //public void CanGetAllMessagesBySubject()
+        //{
+        //    List<Message> messages = controller.AllMessagesBySubject(subject).ViewData.Model as List<Message>;
 
-            Assert.Equal(messages.Count, messagesBySubject.Count);
-        }
+        //    Assert.Equal(messages.Count, messagesBySubject.Count);
+        //}
 
         //[Fact]
         //public void CanGetMessageByID()
