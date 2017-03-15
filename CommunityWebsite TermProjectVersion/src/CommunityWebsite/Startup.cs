@@ -63,9 +63,9 @@ namespace CommunityWebsite
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            app.UseStatusCodePages();
             app.UseStaticFiles();
-
+            app.UseIdentity();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

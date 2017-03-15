@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using CommunityWebsite.Repositories;
 
-namespace CommunityWebsite.Migrations.ApplicationDb
+namespace CommunityWebsite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170315170943_initial")]
+    [Migration("20170315182219_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

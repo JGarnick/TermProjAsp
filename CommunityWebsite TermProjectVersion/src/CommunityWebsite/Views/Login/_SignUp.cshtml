@@ -1,39 +1,38 @@
 ﻿
 @model Member
 <div class="col-xs-offset-2 col-xs-10 contact-form">
-    @Model.
     <article>
         <header>
             <h1>Sign Up</h1>
         </header>
         <div class="entry-content">
             <div role="form">
-                <form action="Community/SignUp/Success" method="post">
+                <form action="Register" method="post">
                     <div><span asp-validation-summary="All" class="text-danger"></span></div>
                     <p>
-                        <label for="FirstName">First Name</label><br>
-                        <div><span asp-validation-for="FistName" class="text-danger"></span></div>
-                        <span><input type="text" size="40" aria-required="true" placeholder="First Name"></span>
+                        <label asp-for="FirstName">First Name</label><br>
+                        <div><span asp-validation-for="FirstName" class="text-danger"></span></div>
+                        <span><input asp-for="FirstName"type="text" size="40"  placeholder="First Name"></span>
                     </p>
                     <p>
-                        <label for="LastName">Last Name</label><br>
+                        <label asp-for="LastName">Last Name</label><br>
                         <div><span asp-validation-for="LastName" class="text-danger"></span></div>
-                        <span><input type="text"  value="" size="40" aria-required="true" placeholder="Last Name"></span>
+                        <span><input asp-for="LastName" type="text" size="40"  placeholder="Last Name"></span>
                     </p>
                     <p>
-                        <label for="Email">Your Email</label><br>
+                        <label asp-for="Email">Your Email</label><br>
                         <div><span asp-validation-for="Email" class="text-danger"></span></div>
-                        <span><input type="email"  size="40" aria-required="true" placeholder="Your Email"></span>
+                        <span><input asp-for="Email" type="email"  size="40" placeholder="Your Email"></span>
                     </p>
                     <p>
-                        <label for="UserName">Username</label><br>
+                        <label asp-for="UserName">Username</label><br>
                         <div><span asp-validation-for="UserName" class="text-danger"></span></div>
-                        <span><input type="text" size="40" aria-required="true" placeholder="username"></span>
+                        <span><input asp-for="UserName" type="text" size="40"  placeholder="username"></span>
                     </p>
                     <p>
-                        <label for="Password">Password</label><br>
+                        <label asp-for="Password">Password</label><br>
                         <div><span asp-validation-for="Password" class="text-danger"></span></div>
-                        <span><textarea  cols="90" rows="1" aria-required="true" placeholder="password"></textarea></span>
+                        <span><input asp-for="Password" type="text"  placeholder="password"/></span>
                     </p>
                     <p><input type="submit" value="Send"></p>
                 </form>

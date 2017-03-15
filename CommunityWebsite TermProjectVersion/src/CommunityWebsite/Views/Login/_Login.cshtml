@@ -1,4 +1,5 @@
-﻿@model Member
+﻿@model LoginViewModel
+
 <div class="col-xs-offset-2 col-xs-10 contact-form">
     <article>
         <header>
@@ -6,27 +7,30 @@
         </header>
         <div class="entry-content">
             <div role="form">
-                <form action="Admin/Login" method="post" enctype="text/plain">
+                <form action="Login" method="post">
+                    <div><span asp-validation-summary="All" class="text-danger"></span></div>
                     <p>
-                        <div><span asp-validation-summary="All" class="text-danger"></span></div>
                         <div>
-                            <label for="UserName">Username</label>
+                            <label asp-for="UserName">Username</label>
+                            <div><span asp-validation-for="UserName" class="text-danger"></span></div>
                         </div>
                         <div>
-                            <span><input type="text" size="40" aria-required="true" placeholder="Username"></span>
+                            <span><input asp-for="UserName" type="text" size="40"  placeholder="Username"></span>
                         </div>
                     </p>
                     <p>
                         <div>
-                            <label for="Password">Password</label><br>
+                            <label asp-for="Password">Password</label><br>
+                            <div><span asp-validation-for="Password" class="text-danger"></span></div>
                         </div>
                         <div>
-                            <span><input asp-for="Password" cols="90" rows="1" aria-required="true" placeholder="Password" /></span>
+                            <span><input asp-for="Password" placeholder="Password" /></span>
                         </div>
                     </p>
-                    <p><input type="submit" value="Send"></p>
+                    <p><input type="submit" value="Login"></p>
                 </form>
             </div>
+            <div><small>Don't have an account? <a href="Register">Sign up!</a></small></div>
         </div>
     </article>
 </div>

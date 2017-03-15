@@ -8,21 +8,22 @@
     <div class="wrap-ut pull-left">
         <div class="userinfo pull-left">
             <div class="avatar">
-                @if (ViewBag.Message.Owner.LoggedIn)
+                <div><i class="fa fa-user-circle-o "></i></div>
+                @*@if (ViewBag.Message.Owner.LoggedIn)
                 {
                     <div class="status green">&nbsp;</div>
                     if (ViewBag.Message.Owner.AvatarImg != "")
                     {
                         @*TODO Make img and status dynamic*@
                         @*<img src="ViewBag.Message.Owner.AvatarImg" />*@
-                        <img src="~/lib/images/head_shot.jpg" alt="avatar">
+                        @*<img src="~/lib/images/head_shot.jpg" alt="avatar">
                     }
                     <div><i class="user-circle-o"></i></div>
                 }
                 else
                 {
                     <div class="status red">&nbsp;</div>
-                }
+                }*@
             </div>
         </div>
         <div class="posttext pull-left">
@@ -55,7 +56,7 @@
                 <div class="userinfo pull-left">
                     <div class="avatar">
                         <div class="status green">&nbsp;</div>
-                            @if (m.Owner.AvatarImg != "")
+                            @if (m.Owner.AvatarImg != null)
                             {
                                 @*TODO Make img and status dynamic*@
                                 @*<img src="ViewBag.Message.Owner.AvatarImg" />*@
@@ -63,11 +64,11 @@
                             }
                             else
                             {
-                                <div><i class="user-circle-o"></i></div>
+                                <div><i class="fa fa-user-circle-o"></i></div>
                             }
                     </div>
                 </div>
-                <div class="posttext pull-left">
+                <div class="posttext pull-right">
                     <h2>@m.Subject</h2>
                     <p>@m.Body</p>
                 </div>
@@ -87,10 +88,12 @@
     <div class="wrap-ut r-form pull-left">
         <div class="userinfo pull-left">
             <div class="avatar">
-                @if (ViewBag.Message.Owner.LoggedIn)
+                @*Temporary*@
+                <div><i class="fa fa-user-circle-o"></i></div>
+                @*@if (ViewBag.Message.Owner.)
                 {
                     <div class="status green">&nbsp;</div>
-                    if (ViewBag.Message.Owner.AvatarImg != "")
+                    if (ViewBag.Message.Owner.AvatarImg != null)
                     {
                         <img src="~/lib/images/head_shot.jpg" alt="avatar">
                     }
@@ -99,17 +102,19 @@
                 else
                 {
                     <div class="status red">&nbsp;</div>
-                }
+                }*@
             </div>
         </div>
         <div class="posttext pull-left">
             <form action="Forum/Reply" method="post">
+                <div><span asp-validation-summary="All" class="text-danger"></span></div>
                 <div class="row">
                     <div class="col-xs-3">
                         <h2>Subject:</h2>
                     </div>
                     <div class="col-xs-9">
-                        <input type="text" name="subject" asp-for="@Model.Subject" />
+                        <div><span asp-validation-for="Subject" class="text-danger"></span></div>
+                        <input type="text"  asp-for="Subject" />
                     </div>
                 </div>
                 <div class="row">
@@ -117,14 +122,15 @@
                         <h2>Message:</h2>
                     </div>
                     <div class="col-xs-9">
-                        <textarea rows="6" name="body" asp-for="@Model.Body"></textarea>
+                        <div><span asp-validation-for="Body" class="text-danger"></span></div>
+                        <textarea rows="6"  asp-for="Body"></textarea>
                     </div>
                 </div>
-                <input type="hidden" name="topic" asp-for="@Model.Topic" value="@ViewBag.Message.Topic" />
-                <input type="hidden" name="date" asp-for="@Model.Date" value="@DateTime.Now" />
-                <input type="hidden" name="owner" asp-for="@Model.Owner" value="@ViewBag.Message.Owner" /> @*TODO This should be the person replying to the message, not the message owner*@
-                <input type="hidden" name="from" asp-for="@Model.From" value="@(ViewBag.Message.Owner.FirstName + " " + ViewBag.Message.Owner.LastName)"/>
-                <input type="hidden" name="id" value="@ViewBag.Message.Id" />
+                <input type="hidden" asp-for="Topic" value="@ViewBag.Message.Topic" />
+                <input type="hidden" asp-for="Date" value="@DateTime.Now" />
+                <input type="hidden" asp-for="Owner" value="@ViewBag.Message.Owner" /> @*TODO This should be the person replying to the message, not the message owner*@
+                <input type="hidden" asp-for="From" value="@(ViewBag.Message.Owner.FirstName + " " + ViewBag.Message.Owner.LastName)"/>
+                <input type="hidden" name="id" value="@ViewBag.Message.messageID" />
                 <button class="col-xs-3 pull-right submit" type="submit">Post</button>
             </form>
         </div>

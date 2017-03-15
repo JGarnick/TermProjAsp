@@ -1,8 +1,4 @@
-﻿@*TODO Optional Parts:
-    - Select topic will have different options based on what page you are on
-    - search feature should return a new partial view with criteria based on topic selected and content typed into search field
-    - Posts section will either be a repository of testimonials, blogs, or forum posts
-    - Sidebar content should change based on which partial view is returned. Optionally turn it off*@
+﻿
 @model dynamic
 @using CommunityWebsite.Models;
 
@@ -204,14 +200,14 @@
                                                 <div><i class="fa fa-user-circle-o" @*aria-hidden="true" *@></i></div>
                                             }
 
-                                            @if (m.Owner.LoggedIn)
+                                            @*@if (m.Owner.)
                                             {
                                                 <div class="status green">&nbsp;</div>
                                             }
                                             else
                                             {
                                                 <div class="status red">&nbsp;</div>
-                                            }
+                                            }*@
                                         </div>
                                     </div>
                                     <div class="posttext pull-left">
@@ -231,8 +227,8 @@
                                         <i class="fa fa-comment"></i>
                                         @Html.ActionLink("Reply", "Forum", "Forum", new { messageID = @m.messageID})
                                     </div>
-                                        @Html.ActionLink("Delete", "DeleteMessage", "Forum", new { id = @m.messageID })
-                                    @*<div class="time"><i class="fa fa-clock-o"></i> @m.Date</div>*@
+                                        @*@Html.ActionLink("Delete", "DeleteMessage", "Forum", new { id = @m.messageID })*@
+                                    <div class="time"><i class="fa fa-clock-o"></i> @m.Date</div>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -304,14 +300,14 @@
                                                 <div><i class="fa fa-user-circle-o"></i></div>
                                             }
 
-                                            @if (b.Author.LoggedIn)
+                                            @*@if (b.Author.LoggedIn)
                                             {
                                                 <div class="status green">&nbsp;</div>
                                             }
                                             else
                                             {
                                                 <div class="status red">&nbsp;</div>
-                                            }
+                                            }*@
                                         </div>
                                     </div>
                                     <div class="posttext pull-left">

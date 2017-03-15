@@ -25,20 +25,27 @@
                     if(ViewBag.Success == "true")
                     {
                         @Html.Partial("_Success");
-
                     }
                     else
                     {
                         @Html.Partial("_Contact");
                     }
                 }
-                else if(ViewBag.Title == "SignUp")
+                else if(ViewBag.Title == "Register")
                 {
                     @Html.Partial("_SignUp");
                 }
                 else if (ViewBag.Title == "Login")
                 {
-                    @Html.Partial("_Login");
+                    @if (ViewBag.SuccessMessage != null)
+                    {
+                        @Html.Partial("_LoginSuccess");
+                    }
+                    else
+                    {
+                        @Html.Partial("_Login");
+                    }
+
                 }
             </div>
             <div class="col-2 col-xs-3" >

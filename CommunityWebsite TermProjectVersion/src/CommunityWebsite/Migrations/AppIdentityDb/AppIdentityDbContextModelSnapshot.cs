@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using CommunityWebsite.Repositories;
 
-namespace CommunityWebsite.Migrations
+namespace CommunityWebsite.Migrations.AppIdentityDb
 {
     [DbContext(typeof(AppIdentityDbContext))]
     partial class AppIdentityDbContextModelSnapshot : ModelSnapshot

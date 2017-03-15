@@ -26,15 +26,23 @@ namespace CommunityWebsite.Controllers
             //Otherwise, return the message and a new reply object to be filled out
             ViewBag.Title = "Forum";
             ViewBag.Sidebar = "true";
-
+            string user = HttpContext.User.Identity.Name;
+            ViewBag.User = user;
             if (messageID != null)
             {
-                var message = (from m in messageRepo.GetAllMessages() //Get the message from Context that matches the ID
+                if(HttpContext.User.Identity.IsAuthenticated)
+                {
+                    var message = (from m in messageRepo.GetAllMessages() //Get the message from Context that matches the ID
                                    where m.messageID == messageID
                                    select m).FirstOrDefault<Message>();
-                ViewBag.Message = message; //Set Viewbag to pass the message to the reply partial view
+                    ViewBag.Message = message; //Set Viewbag to pass the message to the reply partial view
 
-                return View("Template2", new Reply()); //This will serve to set the Model type appropriately for conditions in Template
+                    return View("Template2", new Reply()); //This will serve to set the Model type appropriately for conditions in Template
+                }
+                else
+                {
+                    return RedirectToAction("Login", "Login");
+                }
             }
             else
                 ViewBag.Message = null;

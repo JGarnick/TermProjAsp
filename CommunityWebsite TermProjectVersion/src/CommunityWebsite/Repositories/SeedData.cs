@@ -26,7 +26,7 @@ namespace CommunityWebsite.Repositories
                 Message message = new Message { Subject = "Subject1", Body = "Body1", Date = new DateTime(2017, 1, 31), From = member.FirstName + " " + member.LastName, Topic = "Topic1", Owner = member };
                 member.Messages.Add(message);
                 context.Messages.Add(message);
-                await userManager.UpdateAsync(member);
+                //await userManager.UpdateAsync(member);
 
 
                 //member = new Member { FirstName = "Mike", Email = "mbrown@gmail.com", LastName = "Brown", PhoneNumber = "5415552222", Registered = new DateTime(2017, 1, 22) };
@@ -35,7 +35,7 @@ namespace CommunityWebsite.Repositories
                 message = new Message { Subject = "Subject2", Body = "Body2", Date = new DateTime(2017, 1, 31), From = member.FirstName + " " + member.LastName, Topic = "Topic2", Owner = member };
                 member.Messages.Add(message);
                 context.Messages.Add(message);
-                await userManager.UpdateAsync(member);
+                //await userManager.UpdateAsync(member);
 
                 //member = new Member { FirstName = "Christina", Email = "dancewme0102@yahoo.com", LastName = "Lindsay", PhoneNumber = "5415553333", Registered = new DateTime(2017, 1, 22), LoggedIn = true, AvatarImg = "~/lib/images/head_shot.jpg" };
                 //context.Members.Add(member);
@@ -43,7 +43,7 @@ namespace CommunityWebsite.Repositories
                 message = new Message { Subject = "Subject3", Body = "Body3", Date = new DateTime(2017, 2, 01), From = member.FirstName + " " + member.LastName, Topic = "Topic3", Owner = member };
                 member.Messages.Add(message);
                 context.Messages.Add(message);
-                await userManager.UpdateAsync(member);
+                //await userManager.UpdateAsync(member);
 
                 //member = new Member { FirstName = "Miguel", Email = "miguel.s@gmail.com", LastName = "Sanchez", PhoneNumber = "5415554444", Registered = new DateTime(2017, 1, 21) };
                 //context.Members.Add(member);
@@ -51,7 +51,7 @@ namespace CommunityWebsite.Repositories
                 message = new Message { Subject = "Subject4", Body = "Body4", Date = new DateTime(2017, 2, 01), From = member.FirstName + " " + member.LastName, Topic = "Topic4", Owner = member };
                 member.Messages.Add(message);
                 context.Messages.Add(message);
-                await userManager.UpdateAsync(member);
+                //await userManager.UpdateAsync(member);
 
                 //member = new Member { FirstName = "Andrea", Email = "a.johnson@gmail.com", LastName = "Johnson", PhoneNumber = "5415555555", Registered = new DateTime(2017, 1, 23) };
                 //context.Members.Add(member);
@@ -60,7 +60,7 @@ namespace CommunityWebsite.Repositories
                 message = new Message { Subject = "Subject5", Body = "Body5", Date = new DateTime(2017, 1, 11), From = member.FirstName + " " + member.LastName, Topic = "Topic5", Owner = member };
                 member.Messages.Add(message);
                 context.Messages.Add(message);
-                await userManager.UpdateAsync(member);
+                //await userManager.UpdateAsync(member);
 
                 context.SaveChanges();
 
@@ -223,7 +223,7 @@ namespace CommunityWebsite.Repositories
                 };
                 member.BlogPosts.Add(post);
                 context.BlogPosts.Add(post);
-                await userManager.UpdateAsync(member);
+                //await userManager.UpdateAsync(member);
                 context.SaveChanges();
             }
 
@@ -243,7 +243,7 @@ namespace CommunityWebsite.Repositories
                     Owner = member
                 };
                 member.Testimonials.Add(t);
-                await userManager.UpdateAsync(member);
+                //await userManager.UpdateAsync(member);
                 context.Testimonials.Add(t);
 
                 //member = (from m in context.Members
@@ -259,7 +259,7 @@ namespace CommunityWebsite.Repositories
                     Owner = member
                 };
                 member.Testimonials.Add(t);
-                await userManager.UpdateAsync(member);
+                //await userManager.UpdateAsync(member);
                 context.Testimonials.Add(t);
 
                 //member = (from m in context.Members
@@ -275,7 +275,7 @@ namespace CommunityWebsite.Repositories
                     Owner = member
                 };
                 member.Testimonials.Add(t);
-                await userManager.UpdateAsync(member);
+                //await userManager.UpdateAsync(member);
                 context.Testimonials.Add(t);
 
                 //member = (from m in context.Members
@@ -291,7 +291,7 @@ namespace CommunityWebsite.Repositories
                     Owner = member
                 };
                 member.Testimonials.Add(t);
-                await userManager.UpdateAsync(member);
+                //await userManager.UpdateAsync(member);
                 context.Testimonials.Add(t);
                 
                 context.SaveChanges();
