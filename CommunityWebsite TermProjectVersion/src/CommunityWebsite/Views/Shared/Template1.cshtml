@@ -37,7 +37,7 @@
                 }
                 else if (ViewBag.Title == "Login")
                 {
-                    @if (ViewBag.SuccessMessage != null)
+                    @if (ViewBag.SuccessMessage != null && !ViewBag.SuccessMessage.Contains("Congratulations!"))
                     {
                         @Html.Partial("_LoginSuccess");
                     }

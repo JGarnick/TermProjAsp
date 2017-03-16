@@ -46,6 +46,7 @@ namespace CommunityWebsite
             services.AddTransient<IMessageRepository, EFMessageRepository>();
             services.AddTransient<IBlogPostRepository, EFBlogPostRepository>();
             services.AddTransient<ITestimonialRepository, EFTestimonialRepository>();
+            services.AddTransient<IMemberRepository, EFMemberRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

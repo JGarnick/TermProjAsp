@@ -5,24 +5,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using CommunityWebsite.Models;
+using Microsoft.EntityFrameworkCore;
+using CommunityWebsite.Repositories;
+using System.Security.Claims;
 
 namespace CommunityWebsite.Controllers
 {
     [Route("Community")]
     public class LoginController : Controller
     {
-        protected class Helper
-        {
-            public static bool LoginSuccess { get; set; }
-            public static bool RegisterSuccess { get; set; }
-        }
+        
         private UserManager<Member> userManager;
         private SignInManager<Member> signInManager;
 
-        public LoginController(UserManager<Member> usrMgr, SignInManager<Member> sim)
+        private IMemberRepository memberRepo;
+
+        public LoginController(UserManager<Member> usrMgr, SignInManager<Member> sim, IMemberRepository repo)
         {
             userManager = usrMgr;
             signInManager = sim;
+            memberRepo = repo;
         }
         [Route("Register")]
         [HttpGet]
@@ -41,13 +43,13 @@ namespace CommunityWebsite.Controllers
             {
                 ViewBag.SuccessMessage = "Congratulations! You've successfully joined the community! Just log in below to enjoy the benefits of membership!";
                 Helper.RegisterSuccess = false;
+                return View("Template1", new LoginViewModel());
             }
             else if(Helper.LoginSuccess)
             {
                 //Because SuccessMessage isn't null, this will trigger the template to go to "_LoginSuccess"
                 ViewBag.SuccessMessage = "Welcome " + HttpContext.User.Identity.Name + ", you've successfully Logged in";
                 Helper.LoginSuccess = false;
-                return View("Template1");
             }
 
             return View("Template1", new LoginViewModel());
@@ -57,16 +59,21 @@ namespace CommunityWebsite.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel vm)
         {
+            ViewBag.Title = "Login";
             if (ModelState.IsValid)
             {
-                Member user = await userManager.FindByNameAsync(vm.UserName);
+                Member user = await userManager.FindByNameAsync(vm.UserName); //Not grabbing the Roles......
                 if (user != null)
                 {
                     await signInManager.SignOutAsync(); //Signs out a current user, but crashes if their isn't one
                     Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync( user, vm.Password, false, false);
-
+                   
                     if (result.Succeeded)
                     {
+                        Helper.CurrentRoles = ((ClaimsIdentity)User.Identity).Claims
+                        .Where(c => c.Type == ClaimTypes.Role)
+                        .Select(c => c.Value).ToList();
+                        Helper.CurrentUser = user;
                         Helper.LoginSuccess = true;
                         return RedirectToAction("Login");
                     }
@@ -86,9 +93,9 @@ namespace CommunityWebsite.Controllers
 
             if(ModelState.IsValid)
             {
-                
+                member.Name = member.FirstName + " " + member.LastName;
                 IdentityResult result = await userManager.CreateAsync(member, member.Password);
-
+                
                 if (result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(member, "Member");
@@ -107,7 +114,7 @@ namespace CommunityWebsite.Controllers
                 }
             }
             // We get here either if the model state is invalid or if create user fails
-            return View(member);
+            return View("Template1", member);
         }
         
     }

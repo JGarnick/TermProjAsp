@@ -8,7 +8,7 @@
     <div class="wrap-ut pull-left">
         <div class="userinfo pull-left">
             <div class="avatar">
-                <div><i class="user-circle-o"></i></div>
+                <div><i class="fa fa-user-circle-o"></i></div>
                 <div class="status red">&nbsp;</div>
                 @*@if (ViewBag.Message.Owner.LoggedIn)
                 {
@@ -29,10 +29,12 @@
             <form action="/Community/Forum" method="post">
                 <div class="row">
                     <div class="col-xs-3">
+                        <div><span asp-validation-summary="All" class="text-danger"></span></div>
                         <h2>Subject:</h2>
                     </div>
                     <div class="col-xs-9">
-                        <input type="text" name="subject" asp-for="@Model.Subject" />
+                        <input type="text" asp-for="Subject" />
+                        <div><span asp-validation-for="Subject"class="text-danger"></span></div>
                     </div>
                 </div>
                 <div class="row">
@@ -40,7 +42,8 @@
                         <h2>Topic:</h2>
                     </div>
                     <div class="col-xs-9">
-                        <input type="text" name="topic" asp-for="@Model.Topic" />
+                        <div><span asp-validation-for="Topic" class="text-danger"></span></div>
+                        <input type="text" asp-for="Topic" />
                     </div>
                 </div>
                 <div class="row">
@@ -48,12 +51,13 @@
                         <h2>Message:</h2>
                     </div>
                     <div class="col-xs-9">
-                        <textarea rows="6" name="body" asp-for="@Model.Body"></textarea>
+                        <div><span asp-validation-for="Body" class="text-danger"></span></div>
+                        <textarea rows="6" asp-for="Body"></textarea>
                     </div>
                 </div>
-                <input type="hidden" name="date" asp-for="@Model.Date" value="@DateTime.Now" />
-                <input type="hidden" name="owner" asp-for="@Model.Owner" value="" /> @*TODO This should be the person replying to the message, not the message owner*@
-                <input type="hidden" name="from" asp-for="@Model.From" value="" />
+                <input type="hidden" asp-for="Date" value="@DateTime.Now" />
+                <input type="hidden" asp-for="Owner" value="@ViewBag.User" />
+                <input type="hidden" asp-for="From" value="" />
                 <button class="col-xs-3 pull-right submit" type="submit">Post</button>
             </form>
         </div>

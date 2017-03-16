@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using CommunityWebsite.Repositories;
 using CommunityWebsite.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace CommunityWebsite.Controllers
 {
@@ -26,8 +27,9 @@ namespace CommunityWebsite.Controllers
             //Otherwise, return the message and a new reply object to be filled out
             ViewBag.Title = "Forum";
             ViewBag.Sidebar = "true";
-            string user = HttpContext.User.Identity.Name;
-            ViewBag.User = user;
+            ViewBag.User = Helper.CurrentUser;
+            ViewBag.Role = Helper.CurrentRoles[0];
+            
             if (messageID != null)
             {
                 if(HttpContext.User.Identity.IsAuthenticated)
@@ -52,6 +54,8 @@ namespace CommunityWebsite.Controllers
         [Route("Forum/Reply")] //Come here from reply to make more replies
         public ActionResult Reply(int id, Reply returned)
         {
+            ViewBag.User = Helper.CurrentUser;
+            ViewBag.Role = Helper.CurrentRoles[0];
             var message = (from m in messageRepo.GetAllMessages()
                                where m.messageID == id
                                select m).FirstOrDefault<Message>();
@@ -69,6 +73,8 @@ namespace CommunityWebsite.Controllers
         [Route("Forum")] //Come here from New Message
         public ActionResult Forum(Message returned)
         {
+            ViewBag.User = Helper.CurrentUser;
+            ViewBag.Role = Helper.CurrentRoles[0];
             ViewBag.Title = "Forum";
             ViewBag.Sidebar = "true";
 
@@ -80,6 +86,8 @@ namespace CommunityWebsite.Controllers
         [Route("Forum/Filtered")] //Come here if clicking on Search button
         public ViewResult Filtered(string selected, string searchString)
         {
+            ViewBag.User = Helper.CurrentUser;
+            ViewBag.Role = Helper.CurrentRoles[0];
             ViewBag.Title = "Forum";
             ViewBag.Searchbar = "true";
 
@@ -135,11 +143,13 @@ namespace CommunityWebsite.Controllers
             }
         }
 
-        [HttpGet]
-        //[Route("Forum/{NewMessage}")]
+        
         [Route("Forum/NewMessage")]
         public ActionResult NewMessage()
         {
+            ViewBag.User = Helper.CurrentUser;
+            ViewBag.Role = Helper.CurrentRoles[0];
+            
             ViewBag.Title = "Forum";
 
             return View("Template2", new Message());

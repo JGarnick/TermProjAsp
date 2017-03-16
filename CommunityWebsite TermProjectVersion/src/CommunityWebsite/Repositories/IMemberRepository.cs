@@ -8,10 +8,7 @@ namespace CommunityWebsite.Repositories
 {
     public interface IMemberRepository
     {
-        List<Message> GetAllMessagesByMember(Member member);
-        Member GetMemberByPhoneNumber(string phone);
-        Member GetMemberByName(string name);
-        Member GetMemberRegistrationDate(DateTime date);
+        string GetUserRole(Member member);
         List<Member> GetAllMembersRegisteredOnDate(DateTime registerDate);
         List<Member> GetAllMembersRegisteredBetweenDates(DateTime startDate, DateTime endDate);
     }

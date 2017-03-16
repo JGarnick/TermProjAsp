@@ -11,11 +11,11 @@ namespace CommunityWebsite.Models
         [Required]
         public Member owner = new Member();
         public int replyID { get; set; }
-        [Required]
-        [StringLength(20, MinimumLength = 3)]
+        [Required(ErrorMessage = "Subject cannot be empty")]
+        [StringLength(20, MinimumLength = 5, ErrorMessage = "Subject must have between 5 and 20 characters")]
         public string Subject { get; set; }
-        [Required]
-        [StringLength(200, MinimumLength = 10)]
+        [Required(ErrorMessage = "Body cannot be empty")]
+        [StringLength(200, MinimumLength = 10, ErrorMessage = "Body must have a minimum of 10 characters, and has a max of 200")]
         public string Body { get; set; }
         public string From { get; set; }
         public string Topic { get; set; }

@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CommunityWebsite.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CommunityWebsite.Controllers
 {
     [Route("Admin")]
+    [Authorize(Roles = "Administrator")]
     public class AdminController : Controller
     {
 

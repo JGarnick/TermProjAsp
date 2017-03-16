@@ -12,14 +12,17 @@ namespace CommunityWebsite.Models
         private List<Message> messages = new List<Message>();
         private List<BlogPost> blogposts = new List<BlogPost>();
         private List<Testimonial> testimonials = new List<Testimonial>();
-        //public int memberID { get; set; }
+        [Required(ErrorMessage = "FirstName cannot be empty")]
+        [StringLength(20, MinimumLength = 5, ErrorMessage = "Must have between 5 and 20 characters")]
         public string FirstName { get; set; }
+        [Required(ErrorMessage = "FirstName cannot be empty")]
+        [StringLength(20, MinimumLength = 5, ErrorMessage = "Must have between 5 and 20 characters")]
         public string LastName { get; set; }
         public string Name { get; set; }
         public DateTime Registered { get; set; }
         public string AvatarImg { get; set; }
 
-        [StringLength(20, MinimumLength = 6)]
+        //[StringLength(20, MinimumLength = 6)]
         //[RegularExpression(@"^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$")]
         public string Password { get; set; }
         public List<Message> Messages
