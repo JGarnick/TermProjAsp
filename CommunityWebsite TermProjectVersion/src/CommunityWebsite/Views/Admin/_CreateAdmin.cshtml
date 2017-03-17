@@ -1,23 +1,40 @@
 ﻿@model Member
-<div class="bg-primary panel-body"><h4>Create User</h4></div>
-<div asp-validation-summary="All" class="text-danger"></div>
-<form asp-action="Create" method="post">
-    <div class="form-group">
-        <label asp-for="UserName"></label>
-        <div><span asp-validation-for="UserName" class="text-danger"></span></div>
-        <input asp-for="UserName" class="form-control" />
+
+
+<div class="row">
+    <div class="col-xs-6" style="float:none;margin:0 auto;">
+        <div class="bg-primary panel-body"><h4>Create Admin</h4></div>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <label asp-for="UserName"></label>
+                <div><span asp-validation-for="UserName" class="text-danger"></span></div>
+                <input asp-for="UserName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <div><span asp-validation-for="Email" class="text-danger"></span></div>
+                <input asp-for="Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <div><span asp-validation-for="Password" class="text-danger"></span></div>
+                <input asp-for="Password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName"></label>
+                <div><span asp-validation-for="FirstName" class="text-danger"></span></div>
+                <input asp-for="FirstName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName"></label>
+                <div><span asp-validation-for="LastName" class="text-danger"></span></div>
+                <input asp-for="LastName" class="form-control" />
+            </div>
+            <input type="hidden" asp-for="Role" value="Administrator" />
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a href="Admin/Index" class="btn btn-default">Cancel</a>
+        </form>
     </div>
-    <div class="form-group">
-        <label asp-for="Email"></label>
-        <div><span asp-validation-for="Email" class="text-danger"></span></div>
-        <input asp-for="Email" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label asp-for="Password"></label>
-        <div><span asp-validation-for="Password" class="text-danger"></span></div>
-        <input asp-for="Password" class="form-control" />
-    </div>
-    <input type="hidden" asp-for="Role" value="Administrator" />
-    <button type="submit" class="btn btn-primary">Create</button>
-    <a asp-action="Admin" class="btn btn-default">Cancel</a>
-</form>
+</div>
+

@@ -50,6 +50,10 @@ namespace CommunityWebsite.Controllers
                 //Because SuccessMessage isn't null, this will trigger the template to go to "_LoginSuccess"
                 ViewBag.SuccessMessage = "Welcome " + HttpContext.User.Identity.Name + ", you've successfully Logged in";
                 Helper.LoginSuccess = false;
+                if(Helper.CurrentRole == "Administrator")
+                {
+                    ViewBag.AdminButton = "true";
+                }
             }
 
             return View("Template1", new LoginViewModel());
@@ -62,17 +66,15 @@ namespace CommunityWebsite.Controllers
             ViewBag.Title = "Login";
             if (ModelState.IsValid)
             {
-                Member user = await userManager.FindByNameAsync(vm.UserName); //Not grabbing the Roles......
+                Member user = await userManager.FindByNameAsync(vm.UserName); 
                 if (user != null)
                 {
-                    await signInManager.SignOutAsync(); //Signs out a current user, but crashes if their isn't one
+                    await signInManager.SignOutAsync(); //Signs out a current user
                     Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync( user, vm.Password, false, false);
                    
                     if (result.Succeeded)
                     {
-                        Helper.CurrentRoles = ((ClaimsIdentity)User.Identity).Claims
-                        .Where(c => c.Type == ClaimTypes.Role)
-                        .Select(c => c.Value).ToList();
+                        Helper.CurrentRole = user.Role;
                         Helper.CurrentUser = user;
                         Helper.LoginSuccess = true;
                         return RedirectToAction("Login");

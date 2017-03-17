@@ -8,11 +8,11 @@ namespace CommunityWebsite
 {
     public static class Helper
     {
-        public static List<string> currentRoles = new List<string>();
+        public static string currentRole = "";
         public static bool LoginSuccess { get; set; }
         public static bool RegisterSuccess { get; set; }
         public static Member CurrentUser { get; set; }
-        public static List<string> CurrentRoles { get; set; }
-
+        public static string CurrentRole { get; set; }
+        public static string AdminSuccess { get; set; }
     }
 }

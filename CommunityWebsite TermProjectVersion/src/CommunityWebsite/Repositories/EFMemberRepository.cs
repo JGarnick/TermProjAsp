@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CommunityWebsite.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CommunityWebsite.Repositories
 {
@@ -14,6 +15,12 @@ namespace CommunityWebsite.Repositories
         {
             context = ctx;
         }
+
+        public IQueryable<Member> GetAllMembers()
+        {
+            return context.Users.Include(u => u.Roles).AsQueryable();
+        }
+
         public List<Member> GetAllMembersRegisteredBetweenDates(DateTime startDate, DateTime endDate)
         {
             throw new NotImplementedException();
@@ -27,10 +34,7 @@ namespace CommunityWebsite.Repositories
         public string GetUserRole(Member member)
         {
             throw new NotImplementedException();
-            //member.Roles
-            //string role = (from r in context.UserRoles
-            //               where b.BlogPostID == ID
-            //               select b).Include(b => b.Author).FirstOrDefault<BlogPost>(); )
         }
+
     }
 }

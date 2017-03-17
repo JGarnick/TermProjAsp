@@ -13,17 +13,16 @@ namespace CommunityWebsite.Models
         private List<BlogPost> blogposts = new List<BlogPost>();
         private List<Testimonial> testimonials = new List<Testimonial>();
         [Required(ErrorMessage = "FirstName cannot be empty")]
-        [StringLength(20, MinimumLength = 5, ErrorMessage = "Must have between 5 and 20 characters")]
+        [StringLength(20, MinimumLength = 2, ErrorMessage = "Must have between 2 and 25 characters")]
         public string FirstName { get; set; }
         [Required(ErrorMessage = "FirstName cannot be empty")]
-        [StringLength(20, MinimumLength = 5, ErrorMessage = "Must have between 5 and 20 characters")]
+        [StringLength(20, MinimumLength = 2, ErrorMessage = "Must have between 2 and 25 characters")]
         public string LastName { get; set; }
         public string Name { get; set; }
         public DateTime Registered { get; set; }
         public string AvatarImg { get; set; }
 
-        //[StringLength(20, MinimumLength = 6)]
-        //[RegularExpression(@"^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$")]
+        public string Role { get; set; }
         public string Password { get; set; }
         public List<Message> Messages
         {

@@ -11,5 +11,6 @@ namespace CommunityWebsite.Repositories
         string GetUserRole(Member member);
         List<Member> GetAllMembersRegisteredOnDate(DateTime registerDate);
         List<Member> GetAllMembersRegisteredBetweenDates(DateTime startDate, DateTime endDate);
+        IQueryable<Member> GetAllMembers();
     }
 }

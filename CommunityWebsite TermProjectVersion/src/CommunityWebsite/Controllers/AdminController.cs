@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using CommunityWebsite.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using CommunityWebsite.Repositories;
 
 namespace CommunityWebsite.Controllers
 {
@@ -19,63 +20,89 @@ namespace CommunityWebsite.Controllers
         private IUserValidator<Member> userValidator;
         private IPasswordValidator<Member> passwordValidator;
         private IPasswordHasher<Member> passwordHasher;
+        private IMemberRepository memberRepo;
+        private AppIdentityDbContext context;
 
         public AdminController(UserManager<Member> usrMgr,
                 IUserValidator<Member> userValid,
                 IPasswordValidator<Member> passValid,
-                IPasswordHasher<Member> passwordHash)
+                IPasswordHasher<Member> passwordHash,
+                IMemberRepository repo,
+                AppIdentityDbContext ctx)
         {
+            memberRepo = repo;
             userManager = usrMgr;
             userValidator = userValid;
             passwordValidator = passValid;
             passwordHasher = passwordHash;
+            context = ctx;
         }
 
-        [Route("Login")]
-        public IActionResult Login()
+        [Route("")]
+        [Route("Index")]
+        public IActionResult Index()
         {
-            return View();
-        }
-        [Route("Login")]
-        [HttpPost]
-        public IActionResult Login(Member member)
-        {
-            //TODO Get all members from database that match this member. If Role == Admin, proceed
-            return View();
+            if(Helper.AdminSuccess != "" || Helper.AdminSuccess != null)
+            {
+                ViewBag.AdminSuccess = Helper.AdminSuccess;
+            }
+            ViewBag.TItle = "Index";
+            return View("AdminTemplate", memberRepo.GetAllMembers().ToList());
         }
 
         [Route("CreateAdmin")]
         public IActionResult CreateAdmin()
         {
-            return View();
+            ViewBag.TItle = "Create";
+            return View("AdminTemplate");
         }
         [Route("CreateAdmin")]
         [HttpPost]
-        public async Task<IActionResult> Create(Member member)
+        public async Task<IActionResult> Create(Member admin)
         {
+            ViewBag.Title = "Create";
             if (ModelState.IsValid)
             {
                 Member user = new Member
                 {
-                    UserName = member.UserName,
-                    Email = member.Email
+                    FirstName = admin.FirstName,
+                    LastName = admin.LastName,
+                    Registered = DateTime.Now,
+                    UserName = admin.UserName,
+                    Email = admin.Email,
+                    Password = admin.Password,
+                    Name = admin.FirstName + " " + admin.LastName,
+                    Role = "Administrator"
                 };
-                IdentityResult result
-                    = await userManager.CreateAsync(user, member.Password);
+                var admincreate = await userManager.CreateAsync(user, user.Password);
+                
 
-                if (result.Succeeded)
+                if (admincreate.Succeeded)
                 {
-                    return RedirectToAction("Index");
+                    var adminrole = await userManager.AddToRoleAsync(user, "Administrator");
+                    if (adminrole.Succeeded)
+                    {
+                        Helper.AdminSuccess = "Admin" + admin.Name + " created successfully";
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        foreach (IdentityError error in adminrole.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
+                    }
                 }
                 else
                 {
-                    foreach (IdentityError error in result.Errors)
+                    foreach (IdentityError error in admincreate.Errors)
                     {
                         ModelState.AddModelError("", error.Description);
                     }
+                    
                 }
             }
-            return View(member);
+            return View("AdminTemplate", admin);
         }
         [HttpPost]
         public async Task<IActionResult> Delete(string id)
@@ -97,45 +124,52 @@ namespace CommunityWebsite.Controllers
             {
                 ModelState.AddModelError("", "User Not Found");
             }
-            return View("Index", userManager.Users);
+            return RedirectToAction("Index", userManager.Users);
         }
-
+        [Route("Edit")]
         public async Task<IActionResult> Edit(string id)
         {
+            ViewBag.Title = "Edit";
             Member user = await userManager.FindByIdAsync(id);
             if (user != null)
             {
-                return View(user);
+                return View("AdminTemplate", user);
             }
             else
             {
                 return RedirectToAction("Index");
             }
         }
-
+        [Route("Edit")]
         [HttpPost]
-        public async Task<IActionResult> Edit(string id, string email,
-                string password)
+        public async Task<IActionResult> Edit(Member member)
         {
-            Member user = await userManager.FindByIdAsync(id);
+            ViewBag.Title = "Edit";
+            Member user = await userManager.FindByIdAsync(member.Id);
             if (user != null)
             {
-                user.Email = email;
-                IdentityResult validEmail
-                    = await userValidator.ValidateAsync(userManager, user);
+                user.Email = member.Email;
+                user.AvatarImg = member.AvatarImg;
+                user.FirstName = member.FirstName;
+                user.LastName = member.LastName;
+                user.Name = member.Name;
+                user.Password = member.Password;
+                user.PhoneNumber = member.PhoneNumber;
+                user.UserName = member.UserName;
+                IdentityResult validEmail = await userValidator.ValidateAsync(userManager, user);
+
                 if (!validEmail.Succeeded)
                 {
                     AddErrorsFromResult(validEmail);
                 }
                 IdentityResult validPass = null;
-                if (!string.IsNullOrEmpty(password))
+                if (!string.IsNullOrEmpty(member.Password))
                 {
-                    validPass = await passwordValidator.ValidateAsync(userManager,
-                        user, password);
+                    validPass = await passwordValidator.ValidateAsync(userManager, user, member.Password);
+
                     if (validPass.Succeeded)
                     {
-                        user.PasswordHash = passwordHasher.HashPassword(user,
-                            password);
+                        user.PasswordHash = passwordHasher.HashPassword(user, member.Password);
                     }
                     else
                     {
@@ -144,7 +178,7 @@ namespace CommunityWebsite.Controllers
                 }
                 if ((validEmail.Succeeded && validPass == null)
                         || (validEmail.Succeeded
-                        && password != string.Empty && validPass.Succeeded))
+                        && member.Password != string.Empty && validPass.Succeeded))
                 {
                     IdentityResult result = await userManager.UpdateAsync(user);
                     if (result.Succeeded)
@@ -161,7 +195,7 @@ namespace CommunityWebsite.Controllers
             {
                 ModelState.AddModelError("", "User Not Found");
             }
-            return View(user);
+            return View("AdminTemplate", user);
         }
 
         private void AddErrorsFromResult(IdentityResult result)

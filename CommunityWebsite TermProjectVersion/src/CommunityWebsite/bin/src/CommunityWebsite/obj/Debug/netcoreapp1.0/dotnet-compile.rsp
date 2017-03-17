@@ -207,6 +207,7 @@
 --reference:C:\Users\Christina\.nuget\packages\System.Xml.ReaderWriter\4.0.11\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\Christina\.nuget\packages\System.Xml.XDocument\4.0.11\ref\netstandard1.3\System.Xml.XDocument.dll
 --resource:"C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\bin\src\CommunityWebsite\obj\Debug\netcoreapp1.0\CommunityWebsitedotnet-compile.deps.json",CommunityWebsite.deps.json
+C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Helper.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Program.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Startup.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Controllers\AboutController.cs
@@ -216,17 +217,18 @@ C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\Commun
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Controllers\ForumController.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Controllers\HomeController.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Controllers\LoginController.cs
-C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Controllers\NewsController.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Controllers\ServicesController.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Controllers\TestimonialController.cs
-C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\20170315182219_initial.cs
-C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\20170315182219_initial.Designer.cs
+C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\20170317155116_initial.cs
+C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\20170317155116_initial.Designer.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\ApplicationDbContextModelSnapshot.cs
-C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\AppIdentityDb\20170315182254_initial.cs
-C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\AppIdentityDb\20170315182254_initial.Designer.cs
+C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\AppIdentityDb\20170317155159_Initial.cs
+C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\AppIdentityDb\20170317155159_Initial.Designer.cs
+C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\AppIdentityDb\20170317164014_ChangedNameLimitations.cs
+C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\AppIdentityDb\20170317164014_ChangedNameLimitations.Designer.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\AppIdentityDb\AppIdentityDbContextModelSnapshot.cs
-C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Models\Articles.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Models\BlogPost.cs
+C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Models\LoginViewModel.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Models\Member.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Models\Message.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Models\NewsModel.cs
@@ -235,6 +237,7 @@ C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\Commun
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Repositories\AppIdentityDbContext.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Repositories\ApplicationDbContext.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Repositories\EFBlogPostRepository.cs
+C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Repositories\EFMemberRepository.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Repositories\EFMessageRepository.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Repositories\EFTestimonialRepository.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Repositories\IBlogPostRepository.cs

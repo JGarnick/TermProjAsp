@@ -28,7 +28,7 @@ namespace CommunityWebsite.Controllers
             ViewBag.Title = "Forum";
             ViewBag.Sidebar = "true";
             ViewBag.User = Helper.CurrentUser;
-            ViewBag.Role = Helper.CurrentRoles[0];
+            ViewBag.Role = Helper.CurrentRole;
             
             if (messageID != null)
             {
@@ -55,7 +55,7 @@ namespace CommunityWebsite.Controllers
         public ActionResult Reply(int id, Reply returned)
         {
             ViewBag.User = Helper.CurrentUser;
-            ViewBag.Role = Helper.CurrentRoles[0];
+            ViewBag.Role = Helper.CurrentRole;
             var message = (from m in messageRepo.GetAllMessages()
                                where m.messageID == id
                                select m).FirstOrDefault<Message>();
@@ -74,7 +74,7 @@ namespace CommunityWebsite.Controllers
         public ActionResult Forum(Message returned)
         {
             ViewBag.User = Helper.CurrentUser;
-            ViewBag.Role = Helper.CurrentRoles[0];
+            ViewBag.Role = Helper.CurrentRole;
             ViewBag.Title = "Forum";
             ViewBag.Sidebar = "true";
 
@@ -87,7 +87,7 @@ namespace CommunityWebsite.Controllers
         public ViewResult Filtered(string selected, string searchString)
         {
             ViewBag.User = Helper.CurrentUser;
-            ViewBag.Role = Helper.CurrentRoles[0];
+            ViewBag.Role = Helper.CurrentRole;
             ViewBag.Title = "Forum";
             ViewBag.Searchbar = "true";
 
@@ -148,7 +148,7 @@ namespace CommunityWebsite.Controllers
         public ActionResult NewMessage()
         {
             ViewBag.User = Helper.CurrentUser;
-            ViewBag.Role = Helper.CurrentRoles[0];
+            ViewBag.Role = Helper.CurrentRole;
             
             ViewBag.Title = "Forum";
 

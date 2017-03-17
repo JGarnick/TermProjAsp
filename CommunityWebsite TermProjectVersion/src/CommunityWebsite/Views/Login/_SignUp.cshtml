@@ -34,6 +34,7 @@
                         <div><span asp-validation-for="Password" class="text-danger"></span></div>
                         <span><input asp-for="Password" type="text"  placeholder="password"/></span>
                     </p>
+                        <input type="hidden" asp-for="Role" value="Member" />
                     <p><input type="submit" value="Send"></p>
                 </form>
             </div>

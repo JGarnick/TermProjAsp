@@ -1,0 +1,24 @@
+﻿
+
+
+@*2-column layout template*@
+<div id="temp-3" class="container content">
+    <div class="inner-content clearfix">
+        <div>
+            <div class="col-xs-12 text-center center-block">
+                @if (ViewBag.Title == "Index")
+                {
+                    @Html.Partial("_Index");
+                }
+                else if (ViewBag.Title == "Edit")
+                {
+                    @Html.Partial("_Edit");
+                }
+                else if (ViewBag.Title == "Create")
+                {
+                    @Html.Partial("_CreateAdmin");
+                }
+            </div>
+        </div>
+    </div>
+</div>

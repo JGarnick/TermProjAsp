@@ -55,7 +55,8 @@ namespace CommunityWebsite.Repositories
                         UserName = "C_Lindsay",
                         Email = "dancewme0102@yahoo.com",
                         AvatarImg = "~/lib/images/head_shot.jpg",
-                        Name = "Christina Lindsay"
+                        Name = "Christina Lindsay",
+                        Role = "Administrator"
                     };
                 }
                 var admincreate = await userManager.CreateAsync(admin, adminPassword);
@@ -70,7 +71,8 @@ namespace CommunityWebsite.Repositories
                         LastName = "Smith",
                         UserName = "J_Smith",
                         Email = "jsmith@member.com",
-                        Name = "John Smith"
+                        Name = "John Smith",
+                        Role = "Member"
                     };
 
                     var membercreate = await userManager.CreateAsync(member, password);
@@ -87,7 +89,8 @@ namespace CommunityWebsite.Repositories
                         LastName = "Brown",
                         UserName = "M_Brown",
                         Email = "mbrown@member.com",
-                        Name = "Mike Brown"
+                        Name = "Mike Brown",
+                        Role = "Member"
                     };
 
                     var membercreate = await userManager.CreateAsync(member, password);
@@ -103,7 +106,8 @@ namespace CommunityWebsite.Repositories
                         LastName = "Johnson",
                         UserName = "A_Johnson",
                         Email = "ajohnson@member.com",
-                        Name = "Andrea Johnson"
+                        Name = "Andrea Johnson",
+                        Role = "Member"
                     };
 
                     var membercreate = await userManager.CreateAsync(member, password);
@@ -119,7 +123,8 @@ namespace CommunityWebsite.Repositories
                         LastName = "Sanchez",
                         UserName = "M_Sanchez",
                         Email = "msanchez@member.com",
-                        Name = "Miguel Sanchez"
+                        Name = "Miguel Sanchez",
+                        Role = "Member"
                     };
 
                     var membercreate = await userManager.CreateAsync(member, password);

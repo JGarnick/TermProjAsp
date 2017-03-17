@@ -1,3 +1,7 @@
 ﻿<div class="text-center">
     <h1>@ViewBag.SuccessMessage</h1>
+    @if(ViewBag.AdminButton == "true")
+    {
+        <a asp-controller="Admin" asp-action="Index" class="btn btn-primary">Go to admin page</a>
+    }
 </div>

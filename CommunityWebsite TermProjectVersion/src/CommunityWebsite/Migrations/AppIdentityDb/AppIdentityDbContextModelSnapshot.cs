@@ -56,9 +56,13 @@ namespace CommunityWebsite.Migrations.AppIdentityDb
 
                     b.Property<bool>("EmailConfirmed");
 
-                    b.Property<string>("FirstName");
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 20);
 
-                    b.Property<string>("LastName");
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 20);
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -72,8 +76,7 @@ namespace CommunityWebsite.Migrations.AppIdentityDb
                     b.Property<string>("NormalizedUserName")
                         .HasAnnotation("MaxLength", 256);
 
-                    b.Property<string>("Password")
-                        .HasAnnotation("MaxLength", 20);
+                    b.Property<string>("Password");
 
                     b.Property<string>("PasswordHash");
 
@@ -82,6 +85,8 @@ namespace CommunityWebsite.Migrations.AppIdentityDb
                     b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<DateTime>("Registered");
+
+                    b.Property<string>("Role");
 
                     b.Property<string>("SecurityStamp");
 
@@ -107,7 +112,9 @@ namespace CommunityWebsite.Migrations.AppIdentityDb
                     b.Property<int>("messageID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Body");
+                    b.Property<string>("Body")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 200);
 
                     b.Property<DateTime>("Date");
 
@@ -115,9 +122,13 @@ namespace CommunityWebsite.Migrations.AppIdentityDb
 
                     b.Property<string>("OwnerId");
 
-                    b.Property<string>("Subject");
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 25);
 
-                    b.Property<string>("Topic");
+                    b.Property<string>("Topic")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 25);
 
                     b.HasKey("messageID");
 
@@ -131,7 +142,9 @@ namespace CommunityWebsite.Migrations.AppIdentityDb
                     b.Property<int>("replyID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Body");
+                    b.Property<string>("Body")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 200);
 
                     b.Property<DateTime>("Date");
 
@@ -139,7 +152,9 @@ namespace CommunityWebsite.Migrations.AppIdentityDb
 
                     b.Property<string>("OwnerId");
 
-                    b.Property<string>("Subject");
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 20);
 
                     b.Property<string>("Topic");
 

@@ -219,11 +219,11 @@ C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\Commun
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Controllers\LoginController.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Controllers\ServicesController.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Controllers\TestimonialController.cs
-C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\20170315182219_initial.cs
-C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\20170315182219_initial.Designer.cs
+C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\20170317155116_initial.cs
+C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\20170317155116_initial.Designer.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\ApplicationDbContextModelSnapshot.cs
-C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\AppIdentityDb\20170315182254_initial.cs
-C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\AppIdentityDb\20170315182254_initial.Designer.cs
+C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\AppIdentityDb\20170317155159_Initial.cs
+C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\AppIdentityDb\20170317155159_Initial.Designer.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Migrations\AppIdentityDb\AppIdentityDbContextModelSnapshot.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Models\BlogPost.cs
 C:\Users\Christina\Desktop\CS 296N Web Development 2 ASP NET\Term Project\CommunityWebsite TermProjectVersion\src\CommunityWebsite\Models\LoginViewModel.cs
