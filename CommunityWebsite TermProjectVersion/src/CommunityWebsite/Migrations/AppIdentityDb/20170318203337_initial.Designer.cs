@@ -8,8 +8,8 @@ using CommunityWebsite.Repositories;
 namespace CommunityWebsite.Migrations.AppIdentityDb
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20170317155159_Initial")]
-    partial class Initial
+    [Migration("20170318203337_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

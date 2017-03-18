@@ -68,9 +68,7 @@ namespace CommunityWebsite.Repositories
             }
             if (!context.BlogPosts.Any() && context.Messages.Any())
             {
-                //Member member = (from m in context.Members
-                //                 where m.memberID == 3
-                //                 select m).FirstOrDefault<Member>() as Member;
+                
                 Member member = await userManager.FindByEmailAsync("dancewme0102@yahoo.com");
 
                 BlogPost post = new BlogPost

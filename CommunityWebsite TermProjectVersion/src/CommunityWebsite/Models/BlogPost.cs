@@ -10,7 +10,7 @@ namespace CommunityWebsite.Models
         private string status { get; set; }
         private DateTime created { get; set; }
         public Member author = new Member();
-        public Member Author { get; set; }
+        public Member Author { get { return author; } set { author = value; } }
         public string Title { get; set; }
         public string Body { get; set; }
         public DateTime Created { get { return created; } }

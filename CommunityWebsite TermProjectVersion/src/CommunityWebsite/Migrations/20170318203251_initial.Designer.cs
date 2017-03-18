@@ -8,7 +8,7 @@ using CommunityWebsite.Repositories;
 namespace CommunityWebsite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170317155116_initial")]
+    [Migration("20170318203251_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

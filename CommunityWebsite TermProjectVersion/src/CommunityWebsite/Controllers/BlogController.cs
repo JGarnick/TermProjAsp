@@ -18,10 +18,11 @@ namespace CommunityWebsite.Controllers
             blogRepo = repo;
         }
 
-        [Route("[action]")]
+        [Route("Blog")]
         public IActionResult Blog(int? id)
         {
-            ViewBag.CurrentUser = "Current User"; //This will need to change to a real user
+            ViewBag.CurrentUser = Helper.CurrentUser;
+            ViewBag.CurrentRole = Helper.CurrentRole;
             ViewBag.Sidebar = "true";
             ViewBag.Title = "Blog";
             if (id != null)
@@ -37,9 +38,11 @@ namespace CommunityWebsite.Controllers
             return View("Template2", blogRepo.GetAllBlogPosts().ToList());
         }
         [HttpPost]
-        [Route("Blog/{filtered}")]
+        [Route("Blog/Filtered")]
         public ViewResult Filtered(string selected, string searchString)
         {
+            ViewBag.CurrentUser = Helper.CurrentUser;
+            ViewBag.CurrentRole = Helper.CurrentRole;
             ViewBag.Title = "Blog";
             ViewBag.Searchbar = "true";
 
@@ -70,21 +73,6 @@ namespace CommunityWebsite.Controllers
                     ViewBag.MessageToUser = "Your search returned these results:";
                     return View("Template2", queryResult);
                 }
-                //var member = blogRepo.GetAuthorByName(searchString);
-                //if (member != null)
-                //{
-                //    var queryResult = blogRepo.GetAllBlogPostsByAuthor(member);
-                //    if(queryResult.Count > 0)
-                //    {
-                //        ViewBag.MessageToUser = "Your search returned these results:";
-                //        return View("Template2", queryResult);
-                //    }
-                //    else
-                //    {
-                //        ViewBag.MessageToUser = "Your search returned no results.";
-                //        return View("Template2");
-                //    }
-                //}
                 else
                 {
                     ViewBag.MessageToUser = "Your search returned no results.";
